@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1 class="info">猜數字 0~100猜一個</h1>
+    <input type="number" max="100" min="0" id="input">
+    <button class="btn">送出</button>
+    <button class="reset">reset</button>
+    <script>
+       
+       
+       var answer = Math.floor(Math.random() * 101);
+        console.log("答案:" + answer)
+        var info = document.querySelector(".info")
+        var count = 0;
+        var btn = document.querySelector(".btn");
+        var max_num = 100;
+        var min_num = 0;
+        var reset = document.querySelector(".reset");
+        var input;
+       
+        btn.onclick = function () {
+            var input_number =parseInt(document.querySelector("#input").value); 
+            count++;
+            if (input_number === answer) {
+                info.innerHTML = "猜對了 猜了" + count + "次";
+            } else if (input_number > answer) {
+                max_num = input_number;
+                info.innerHTML = "太大了 "+min_num+" ~ " +max_num;
+            }
+            else {
+                min_num = input_number;
+                info.innerHTML = "太小了 "+min_num+" ~ " +max_num;
+
+            }
+        }
+
+        reset.onclick = function () {
+            answer = Math.floor(Math.random() * 101);
+            max_num = 100;
+            min_num = 0;
+            info.innerHTML = "猜數字 0~100猜一個";
+            console.log("答案:" + answer)
+            // input.value="";
+        }
+    </script>
+</body>
+
+</html>
